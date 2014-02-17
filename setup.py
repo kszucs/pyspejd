@@ -13,12 +13,12 @@ ext_modules = []
 
 if use_cython:
     ext_modules += [
-        Extension('spejd', ['spejd.pyx'], libraries=['spejd'], language='c++')
+        Extension('pyspejd', ['spejd.pyx'], libraries=['spejd'], language='c++')
     ]
     cmdclass.update({'build_ext': build_ext})
 else:
     ext_modules += [
-        Extension('spejd', ['spejd.cpp'], libraries=['spejd'], language='c++')
+        Extension('pyspejd', ['spejd.cpp'], libraries=['spejd'], language='c++')
     ]
 
 setup(
