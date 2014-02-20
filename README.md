@@ -2,11 +2,27 @@
 
 Python wrapper for [Spejd (libspejd)](http://zil.ipipan.waw.pl/Spejd/), a tool for partial parsing and rule-based morphosyntactic disambiguation
 
-### REQUIREMENTS:
+### Requirements:
 
-    - libspejd
+    - libspejd >= 1.40b
     - optional Cython >= 0.20
 
-### INSTALL:
+### Install:
 
     python setup.py build_ext --inplace
+
+### Usage
+
+```python
+
+import pyspejd
+
+spejd = pyspejd.Spejd('./examples/config.ini')
+
+text = u'Warszawa jest ośrodkiem naukowym, kulturalnym, politycznym oraz '
+       u'gospodarczym na skalę europejską.'
+
+result = spejd.process_data(text.encode('utf-8'))
+
+print spejd.get_final_report()
+```

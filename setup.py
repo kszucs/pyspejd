@@ -1,3 +1,5 @@
+__version__ = '1.4.0b'
+
 from distutils.core import setup
 from distutils.extension import Extension
 
@@ -23,6 +25,7 @@ else:
 
 setup(
     name='pyspejd',
+    version = __version__,
     cmdclass = cmdclass,
     ext_modules=ext_modules,
 )
