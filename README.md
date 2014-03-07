@@ -11,6 +11,10 @@ Python wrapper for [Spejd (libspejd)](http://zil.ipipan.waw.pl/Spejd/), a tool f
 
     python setup.py build_ext --inplace
 
+#### With pip:
+
+    pip install git+https://github.com/kszucs/pyspejd.git
+
 ### Usage
 
 ```python
