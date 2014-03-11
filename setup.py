@@ -16,12 +16,12 @@ ext_modules = []
 
 if use_cython:
     ext_modules += [
-        Extension('pyspejd', ['./pyspejd/__init__.pyx'], libraries=['spejd', 'mpi', 'dl'], language='c++')
+        Extension('pyspejd', ['spejd.pyx'], libraries=['spejd', 'mpi'], language='c++')
     ]
     cmdclass.update({'build_ext': build_ext})
 else:
     ext_modules += [
-        Extension('pyspejd', ['/pyspejd/__init__.cpp'], libraries=['spejd', 'mpi', 'dl'], language='c++')
+        Extension('pyspejd', ['spejd.cpp'], libraries=['spejd', 'mpi'], language='c++')
     ]
 
 os.environ["CC"] = 'mpicxx'
