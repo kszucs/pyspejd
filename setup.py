@@ -24,8 +24,6 @@ else:
         Extension('pyspejd', ['spejd.cpp'], libraries=['spejd', 'mpi'], language='c++')
     ]
 
-os.environ["CC"] = 'mpicxx'
-
 setup(
     name='pyspejd',
     version = __version__,
