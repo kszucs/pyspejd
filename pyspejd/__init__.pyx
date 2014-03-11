@@ -1,7 +1,11 @@
-cimport pyspejd.dlfcn as dlfcn
+from ctypes import *
 cimport pyspejd.libspejd as libspejd
 include "spejd.pyx"
 
-cdef void* handle = dlfcn.dlopen("libmpi.so", dlfcn.RTLD_NOW | dlfcn.RTLD_LAZY | dlfcn.RTLD_GLOBAL)
-if(not handle):
-    raise RuntimeError("Could not load mpi library: %s" % dlfcn.dlerror())
+mpi = CDLL('libmpi.0.dylib', RTLD_GLOBAL)
+f = pythonapi.Py_GetArgcArgv
+argc = c_int()
+argv = POINTER(c_char_p)()
+f(byref(argc), byref(argv))
+mpi.MPI_Init(byref(argc), byref(argv))
+mpi.MPI_Finalize()
