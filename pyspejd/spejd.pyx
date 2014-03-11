@@ -1,6 +1,6 @@
 from libcpp.vector cimport vector
 from libcpp.string cimport string
-from libspejd cimport spejd, create_instance
+from pyspejd.libspejd cimport spejd, create_instance
 
 import os
 
