@@ -2,7 +2,6 @@ __version__ = '1.4.0b'
 
 from distutils.core import setup
 from distutils.extension import Extension
-import os
 
 try:
     from Cython.Distutils import build_ext
@@ -16,15 +15,13 @@ ext_modules = []
 
 if use_cython:
     ext_modules += [
-        Extension('pyspejd', ['spejd.pyx'], libraries=['spejd', 'mpi'], language='c++')
+        Extension('pyspejd', ['spejd.pyx'], libraries=['spejd'], language='c++')
     ]
     cmdclass.update({'build_ext': build_ext})
 else:
     ext_modules += [
-        Extension('pyspejd', ['spejd.cpp'], libraries=['spejd', 'mpi'], language='c++')
+        Extension('pyspejd', ['spejd.cpp'], libraries=['spejd'], language='c++')
     ]
-
-os.environ["CC"] = 'mpicxx'
 
 setup(
     name='pyspejd',
