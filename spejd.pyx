@@ -1,6 +1,6 @@
 from libcpp.vector cimport vector
 from libcpp.string cimport string
-from libspejd cimport spejd, create_instance
+from libspejd cimport spejd, create_instance, cerr
 import os
 
 cdef class Spejd:
@@ -10,6 +10,7 @@ cdef class Spejd:
 
     def __cinit__(self, config=False):
         self.thisptr = create_instance()
+        self.thisptr.set_out_stream(&cerr)
         if config:
             self.load_config_file(config)
             self.commit_config()
